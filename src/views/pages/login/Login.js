@@ -97,10 +97,8 @@ const Login = () => {
                   <CCol xs="12" sm="6">
 
                     <FacebookLogin
-                    appId=" https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:4200/dashboard
-                    &response_type=TOKEN&client_id= 2tom720qv8l82k6mobidvfupse
-
-                    "
+                    appId="https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:4200/dashboard
+                    &response_type=TOKEN&client_id= 2tom720qv8l82k6mobidvfupse"
                     autoLoad={true}
                     fields="name,email,picture"
                     onClick={componentClicked}
@@ -109,9 +107,7 @@ const Login = () => {
                   <CCol xs="12" sm="6">
 
                   <GoogleLogin
-                    clientId="
-                    https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Google&redirect_uri=http://localhost:4200/dashboard&response_type=TOKEN&client_id=2tom720qv8l82k6mobidvfupse &scope=email openid profile"
-
+                    clientId="https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Google&redirect_uri=http://localhost:4200/dashboard&response_type=TOKEN&client_id=2tom720qv8l82k6mobidvfupse &scope=email openid profile"
                     buttonText="Login"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
