@@ -16,34 +16,21 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {useHistory} from 'react-router-dom'
-import { render } from 'enzyme/build'
-import { object } from 'prop-types'
+
 
 
 
 const Register = () => {
   const [name,setName]=useState("");
- {/* const [nameAvailable,setNameAvailable]=useState(null);*/}
   const [role,setRole]=useState("");
   const [password,setPassword]=useState("");
   const [email,setEmail]=useState("");
   const [phone,setPhone]=useState("");
-  const history=useHistory();
+ {/* const history=useHistory();*/}
 
   async function signUp()
   {
- {/* {
-    try{
-      const response =await APIUtility.isNameAvailable(name);
-      const{data=null }=response;
-      if(data){
-        setNameAvailable(data);
-      }
-    }
-    catch(error){
-      setNameAvailable(null);
-    }
-    }*/}
+
     let item ={name,role,password,email,phone}
     console.warn(item)
 

@@ -23,14 +23,13 @@ import {useHistory} from 'react-router-dom'
 const responseGoogle=(response)=>{
   console.log(response);
 
+
 }
 
 const responseFacebook =(response)=>{
-  console.log("login result",response);
+  console.log(response);
 }
-const componentClicked =(data)=>{
-  console.warn(data)
-}
+
 
 const Login = () => {
   const [email,setEmail]=useState("");
@@ -87,7 +86,10 @@ const Login = () => {
                         <CButton onClick={signIn} color="primary" className="px-4">Login</CButton>
                       </CCol>
                       <CCol xs="6" className="text-right">
-                        <CButton color="link" className="px-0">Forgot password?</CButton>
+                        <CButton className="px-0">
+                        <Link to="/forgetpassword">
+                          Forget Password? </Link>
+                          </CButton>
                       </CCol>
                     </CRow>
                   </CForm>
@@ -96,27 +98,13 @@ const Login = () => {
                 <CRow>
                   <CCol xs="12" sm="6">
 
-                    <FacebookLogin
-                    appId=" https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:4200/dashboard
-                    &response_type=TOKEN&client_id= 2tom720qv8l82k6mobidvfupse
+                    <a href="https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:4200/register/&response_type=TOKEN&client_id=2tom720qv8l82k6mobidvfupse">login with facebook</a>
 
-                    "
-                    autoLoad={true}
-                    fields="name,email,picture"
-                    onClick={componentClicked}
-                    callback= {responseFacebook} />
                   </CCol>
+
                   <CCol xs="12" sm="6">
 
-                  <GoogleLogin
-                    clientId="
-                    https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Google&redirect_uri=http://localhost:4200/dashboard&response_type=TOKEN&client_id=2tom720qv8l82k6mobidvfupse &scope=email openid profile"
-
-                    buttonText="Login"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    cookiPolicy={'single_host_origin'}
-                    />
+                  <a href="https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Google&redirect_uri=http://localhost:4200/dashboard/&response_type=CODE&client_id=2tom720qv8l82k6mobidvfupse&scope=email openid profile">Signin with Google</a>
                   </CCol>
                 </CRow>
               </CCardFooter>
