@@ -25,7 +25,7 @@ export default class forgetpassword extends Component {
         }
         const data = { email: this.state.email };
         axios
-            .post("https://ljgzpa60g0.execute-api.us-west-2.amazonaws.com/Dev/authentication/forgot-password", data)
+            .post("https://wu89z93mp4.execute-api.us-west-2.amazonaws.com/dev/authentication/forgot-password", data)
             .then(result => {
                 NotificationManager.success("Password Reset link sent to your email .Please check the your email.Link Will be Valid For 30 min");
             })

@@ -33,14 +33,16 @@ const responseFacebook =(response)=>{
 
 const Login = () => {
   const [email,setEmail]=useState("");
+  const [phone,setPhone]=useState("");
   const [password,setPassword]=useState("");
+  const [medium,setMedium]=useState("");
   const history=useHistory();
 
   async function signIn()
   {
-    let item ={ email,password}
+    let item ={ email,phone,password,medium}
 
-    let result = await fetch('https://ljgzpa60g0.execute-api.us-west-2.amazonaws.com/Dev/authentication/signin',{
+    let result = await fetch('https://wu89z93mp4.execute-api.us-west-2.amazonaws.com/dev/authentication/signin',{
       method:'POST',
       headers:{
         "Content-Type":"json",
@@ -51,7 +53,7 @@ const Login = () => {
     });
     result=await result.json();
     localStorage.setItem ("user-info",JSON.stringify(result))
-    history.push("/register")
+   {/* history.push("/dashboard")*/}
   }
 
   return (
@@ -73,14 +75,30 @@ const Login = () => {
                       </CInputGroupPrepend>
                       <CInput type="text"  value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" autoComplete="email" />
                     </CInputGroup>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupPrepend>
+                        <CInputGroupText>
+                          <CIcon name="cil-user" />
+                        </CInputGroupText>
+                      </CInputGroupPrepend>
+                      <CInput type="text"  value={phone} onChange={(e)=>setPhone(e.target.value)} placeholder="Phone" autoComplete="phone" />
+                    </CInputGroup>
+
+
                     <CInputGroup className="mb-4">
                       <CInputGroupPrepend>
                         <CInputGroupText>
                           <CIcon name="cil-lock-locked" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" autoComplete="current-password" />
+                      <CInput type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" autoComplete="password" />
                     </CInputGroup>
+                    <CInputGroup className="mb-3">
+                    <CInputGroupPrepend>
+                      <CInputGroupText>@</CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInput type="text"  value={medium} onChange={(e)=>setMedium(e.target.value)} placeholder="Medium" autoComplete="medium" />
+                  </CInputGroup>
                     <CRow>
                       <CCol xs="6">
                         <CButton onClick={signIn} color="primary" className="px-4">Login</CButton>
@@ -98,13 +116,14 @@ const Login = () => {
                 <CRow>
                   <CCol xs="12" sm="6">
 
-                    <a href="https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:4200/register/&response_type=TOKEN&client_id=2tom720qv8l82k6mobidvfupse">login with facebook</a>
+                    <a href="https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Google&redirect_uri=http://localhost:4200/dashboard/&response_type=TOKEN&client_id=67vp1iechhld9q72mupp6ctshr&scope=email openid profile">login with Google</a>
+
 
                   </CCol>
 
                   <CCol xs="12" sm="6">
 
-                  <a href="https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Google&redirect_uri=http://localhost:4200/dashboard/&response_type=CODE&client_id=2tom720qv8l82k6mobidvfupse&scope=email openid profile">Signin with Google</a>
+                  <a href="https://demo-auth-nested-stack.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:4200/dashboard/&response_type=TOKEN&client_id=67vp1iechhld9q72mupp6ctshr">Signin with facebook</a>
                   </CCol>
                 </CRow>
               </CCardFooter>

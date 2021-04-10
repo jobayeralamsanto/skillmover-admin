@@ -1,5 +1,5 @@
 
-import React ,{ useState } from 'react'
+import React ,{  useState } from 'react'
 import {
   CButton,
   CCard,
@@ -16,6 +16,11 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {useHistory} from 'react-router-dom'
+import User from 'src/views/users/User'
+import { Link } from 'react-router-dom'
+import { notify } from 'react-notify-toast'
+
+
 
 
 
@@ -26,15 +31,16 @@ const Register = () => {
   const [password,setPassword]=useState("");
   const [email,setEmail]=useState("");
   const [phone,setPhone]=useState("");
+  const [medium,setMedium]=useState("");
  {/* const history=useHistory();*/}
 
   async function signUp()
   {
 
-    let item ={name,role,password,email,phone}
+    let item ={name,role,password,email,phone,medium}
     console.warn(item)
 
-    let result = await fetch('https://ljgzpa60g0.execute-api.us-west-2.amazonaws.com/Dev/authentication/signup',{
+    let result = await fetch('https://wu89z93mp4.execute-api.us-west-2.amazonaws.com/dev/authentication/signup',{
       method:'POST',
       body:JSON.stringify(item),
       headers:{
@@ -51,6 +57,31 @@ const Register = () => {
 
 
   };
+
+ {/* let result =await fetch('https://pk4hbxqjph.execute-api.us-west-2.amazonaws.com/Dev/authentication/confirm-email-signup',async(req,res,next)=>{
+    try{
+      const user=await User.findOne({emailToken:req.query.token});
+      if(!user){
+
+      req.flash('error','Token is invalid');
+      return res.redirect('/register');
+    }
+    user.emailToken=null;
+    user.isVerified = true;
+    await user.save();
+    await req.login(user,async (err)=>{
+      if (err) return next(err);
+      req.flash('success','welcome to champ ${user.username}');
+      const redirectUrl =req.session.redirectTo || '/';
+      delete req.session.redirectTo;
+      res.redirect(redirectUrl);
+    });
+   } catch (error){
+    console.log(error);
+    req.flash('error','something went wrong');
+    req.redirect('/login');
+  }
+  })*/}
 
   {/*400;(response)=>{
     this.item.setMessage((response.errors))
@@ -104,6 +135,12 @@ const Register = () => {
                     <CInputGroupPrepend>
                       <CInputGroupText>@</CInputGroupText>
                     </CInputGroupPrepend>
+                    <CInput type="text"  value={medium} onChange={(e)=>setMedium(e.target.value)} placeholder="Medium" autoComplete="role" />
+                  </CInputGroup>
+                  <CInputGroup className="mb-3">
+                    <CInputGroupPrepend>
+                      <CInputGroupText>@</CInputGroupText>
+                    </CInputGroupPrepend>
                     <CInput type="text" required value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" autoComplete="email" />
                   </CInputGroup>
 
@@ -128,12 +165,7 @@ const Register = () => {
               </CCardBody>
               <CCardFooter className="p-4">
                 <CRow>
-                  <CCol xs="12" sm="6">
-                    <CButton className="btn-facebook mb-1" block><span>facebook</span></CButton>
-                  </CCol>
-                  <CCol xs="12" sm="6">
-                      <CButton className="btn-twitter mb-1" block><span>Google</span></CButton>
-                  </CCol>
+
                 </CRow>
               </CCardFooter>
             </CCard>
