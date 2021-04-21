@@ -160,7 +160,20 @@ const Register = () => {
                     </CInputGroupPrepend>
                     <CInput type="phone"  value={phone} onChange={(e)=>setPhone(e.target.value)} placeholder="Enter-your-phone" autoComplete="new-password" />
                   </CInputGroup>
-                  <CButton onClick={signUp} color="success" block>Create Account</CButton>
+                  <CRow>
+                      <CCol xs="6">
+                      <CButton className="px-0">
+                        <CButton  color="primary" onClick={signUp} className="px-4">Create Account</CButton>
+                        </CButton>
+                      </CCol>
+                      <CCol xs="6" className="text-right">
+                        <CButton className="px-0">
+                        <Link to="/login">
+                        <CButton  color="primary" className="px-4">Back to Login</CButton>
+                           </Link>
+                          </CButton>
+                      </CCol>
+                    </CRow>
                 </CForm>
               </CCardBody>
               <CCardFooter className="p-4">

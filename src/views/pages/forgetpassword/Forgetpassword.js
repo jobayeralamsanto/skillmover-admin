@@ -56,6 +56,11 @@ export default class forgetpassword extends Component {
                                 </div>
                                 <input type="button" value="send Mail" onClick={this.handleForm} className="btn btn-primary" />
                             </div>
+                            <div>
+                            <Link to="/login">
+                            <input type="button" value="Back to login"  className="btn btn-primary" />
+                            </Link>
+                            </div>
                         </div>
                         <div className="col-sm-2"></div>
                     </div>
