@@ -6,18 +6,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from "react-router-dom";
 
 import { icons } from './assets/icons'
 
 import { Provider } from 'react-redux'
-import store from './store'
+import {createStore,applyMiddleware} from 'redux'
+import ReduxThunk from 'redux-thunk'
+import rootReducer from './rootReducer'
+const store =createStore(rootReducer,applyMiddleware(ReduxThunk))
+
+
 
 React.icons = icons
 
+
+
 ReactDOM.render(
-  <Provider store={store}>
+
+  <Provider store={store} >
     <App/>
   </Provider>,
+
   document.getElementById('root')
 );
 
